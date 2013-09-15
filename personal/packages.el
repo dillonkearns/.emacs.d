@@ -5,5 +5,6 @@
    ag
    scss-mode
    yasnippet
-   github-browse-file   
+   github-browse-file
+   solarized-theme
    ))
