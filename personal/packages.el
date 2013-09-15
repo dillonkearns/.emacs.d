@@ -1,0 +1,9 @@
+(prelude-require-packages 
+ '(
+   markdown-mode
+   diff-hl
+   ag
+   scss-mode
+   yasnippet
+   github-browse-file   
+   ))
