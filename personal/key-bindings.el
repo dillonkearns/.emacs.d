@@ -2,3 +2,4 @@
 (global-set-key (kbd "s-w") 'er/expand-region)
 (global-set-key (kbd "s-W") 'er/contract-region)
 (global-set-key (kbd "C-x t") 'dtk/open-root-in-source-tree)
+(global-set-key (kbd "\C-cc") 'capture-work-note)
