@@ -7,4 +7,8 @@
    yasnippet
    github-browse-file
    solarized-theme
+   ruby-test-mode
+   ruby-block
+   rbenv
+   rinari
    ))
