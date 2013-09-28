@@ -9,3 +9,14 @@
 (global-set-key (kbd "\C-cc") 'capture-work-note)
 (global-set-key (kbd "\C-c[") 'diff-hl-previous-hunk)
 (global-set-key (kbd "\C-c]") 'diff-hl-next-hunk)
+
+
+;; key chords
+(key-chord-define-global "jb" 'ruby-beginning-of-block)
+(key-chord-define-global "je" 'ruby-end-of-block)
+(key-chord-define-global "JO" (lambda ()
+                                (interactive)
+                                (other-window -1))) ;; back one
+(key-chord-define-global "jo" 'other-window)
+(key-chord-define-global "jf" 'iy-go-to-char)
+(key-chord-define-global "JF" 'iy-go-to-char-backward)
