@@ -16,10 +16,6 @@
 
 (eval-after-load 'ruby-mode
   '(progn
-     (require 'rbenv)
-     (global-rbenv-mode)
-     (setq rbenv-show-active-ruby-in-modeline nil)
-
      (require 'ruby-block)
      (setq ruby-block-highlight-toggle 'overlay)
      (setq ruby-block-highlight-toggle t)
