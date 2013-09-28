@@ -18,4 +18,4 @@
                                 (interactive)
                                 (other-window -1))) ;; back one
 (key-chord-define-global "jo" 'other-window)
-(key-chord-define-global "jc" 'dispatch-goto-matching)
+(key-chord-define-global "jc" 'jump-to-corresponding)

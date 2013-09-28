@@ -23,10 +23,17 @@
    ((string-match (current-word) "\\(for\\|while\\|until\\|if\\|class\\|module\\|case\\|unless\\|def\\|begin\\|do\\)")
     (ruby-end-of-block)
     )
+
+   ;; is there an end keyword anywhere on this line?
+   ((string-match "end" (thing-at-point 'line))
+    (ruby-beginning-of-block))
+
+   ;; or are we at a keyword itself?
+   (t (ruby-end-of-block))
    )
   )
 
-(defun dispatch-goto-matching (arg)
+(defun jump-to-corresponding (arg)
   (interactive "p")
 
   (if (or
