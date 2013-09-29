@@ -23,7 +23,7 @@
   "Return code file if unique, otherwise return result of a projectile-completing-read"
   (dtk-matching-files (dtk-matching-code-file-name test-file-path))
     (if (= (length (dtk-matching-files (dtk-matching-code-file-name test-file-path))) 0)
-        (throw 'no-test-file t)
+        (throw 'no-test-file (format "No project file matches'%s'" test-file-path))
       )
 
     (if (> (length (dtk-matching-files (dtk-matching-code-file-name test-file-path))) 1)
