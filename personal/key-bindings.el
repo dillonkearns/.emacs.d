@@ -5,7 +5,6 @@
 (global-set-key (kbd "s-g") 'ag-project)
 (global-set-key (kbd "s-G") 'ag-project-regexp)
 (global-set-key (kbd "s-T") 'dtk-tdd-split)
-(global-set-key (kbd "\C-cm") 'markdown-preview-file)
 (global-set-key (kbd "s-t") 'dtk/open-root-in-source-tree)
 (global-set-key (kbd "\C-cc") 'capture-work-note)
 (global-set-key (kbd "M-p") 'diff-hl-previous-hunk)
