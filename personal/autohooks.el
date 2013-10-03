@@ -22,4 +22,12 @@
      (setq ruby-block-highlight-toggle 'minibuffer)
 
      (ruby-block-mode t)
+     (ruby-test-mode t)
 ))
+
+
+(defun dtk-copy-test-command ()
+  "TODO"
+  (interactive)
+  (kill-new (ruby-test-command (buffer-file-name)))
+)
