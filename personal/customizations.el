@@ -5,3 +5,4 @@
                 'move-beginning-of-line)
 
 (setq rbenv-show-active-ruby-in-modeline nil)
+(setq ace-jump-mode-scope 'window)
