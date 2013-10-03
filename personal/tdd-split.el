@@ -4,7 +4,7 @@
     (delete-other-windows)
     (find-file (expand-file-name test-file-path (projectile-project-root)))
     (find-file-other-window (expand-file-name (dtk-matching-code-file-path test-file-path) (projectile-project-root)))
-    (other-window)
+    (other-window 1)
 ))
 
 (defun dtk-matching-code-file-name (test-file-path)
