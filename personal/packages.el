@@ -1,4 +1,4 @@
-(prelude-require-packages 
+(prelude-require-packages
  '(
    markdown-mode
    diff-hl
