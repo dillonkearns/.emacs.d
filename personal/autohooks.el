@@ -26,8 +26,16 @@
 ))
 
 
-(defun dtk-copy-test-command ()
+(defun dtk-run-test-command ()
   "TODO"
   (interactive)
-  (kill-new (ruby-test-command (buffer-file-name)))
+  (do-applescript (format
+  "
+tell application \"iTerm\"
+		tell the current session of current terminal
+			write text \"%s\"
+		end tell
+	end tell
+
+" (ruby-test-command (buffer-file-name))))
 )
