@@ -10,7 +10,7 @@
 (global-set-key (kbd "s-T") 'dtk-tdd-split)
 
 
-(global-set-key (kbd "\C-cc") 'capture-work-note)
+(global-set-key (kbd "\C-cc") 'org-capture)
 (global-set-key (kbd "M-p") 'diff-hl-previous-hunk)
 (global-set-key (kbd "M-n") 'diff-hl-next-hunk)
 (global-set-key (kbd "M-P") 'move-text-up)
