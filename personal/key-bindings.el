@@ -18,3 +18,21 @@
 
 ;; key chords
 (key-chord-define-global "jc" 'jump-to-corresponding)
+
+
+;; removed prelude defaults
+(global-unset-key [(control shift up)])
+(global-unset-key [(control shift down)])
+(global-unset-key [(meta shift up)])
+(global-unset-key [(meta shift down)])
+
+;; Use shell-like backspace C-h and C-M-h, rebind help to M-h
+(define-key key-translation-map [?\C-h] [?\C-?])
+(define-key key-translation-map [?\C-\M-h] [?\C-\M-?])
+(global-set-key (kbd "M-h") 'help-command)
+
+;; Emacs overrides
+(global-set-key (kbd "C-o") 'other-window)
+(global-set-key (kbd "M-o") (lambda ()
+                              (interactive)
+                              (other-window -1)))
