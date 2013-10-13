@@ -6,7 +6,7 @@
    scss-mode
    yasnippet
    github-browse-file
-   solarized-theme
+   dash-at-point
    ruby-test-mode
    ruby-block
    rbenv
