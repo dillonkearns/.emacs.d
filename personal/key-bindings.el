@@ -5,6 +5,7 @@
 (global-unset-key (kbd "s-g"))
 (global-set-key (kbd "s-g") 'ag-project)
 (global-set-key (kbd "s-G") 'ag-project-regexp)
+(global-set-key (kbd "M-s-©") 'ag)
 (global-set-key (kbd "s-S") 'dtk/open-root-in-source-tree)
 (global-set-key (kbd "s-t") 'projectile-find-test-file)
 (global-set-key (kbd "s-T") 'dtk-tdd-split)
@@ -33,6 +34,9 @@
 
 ;; Emacs overrides
 (global-set-key (kbd "C-o") 'other-window)
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "C-o") 'other-window)))
 (global-set-key (kbd "M-o") (lambda ()
                               (interactive)
                               (other-window -1)))
