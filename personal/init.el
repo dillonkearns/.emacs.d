@@ -8,3 +8,23 @@
 (eval-after-load "yas/minor-mode" '(diminish 'yas/minor-mode))
 (eval-after-load "Projectile" '(diminish 'projectile-mode))
 (eval-after-load "ruby-block" '(diminish 'ruby-block-mode))
+
+
+(add-to-list 'auto-mode-alist '("Cask\\'" . emacs-lisp-mode))
+
+(push ".DS_Store" dired-omit-extensions)
+
+(setq ag-highlight-search t)
+(setq ag-reuse-buffers 't)
+
+
+
+;; Reuse dired buffers
+(put 'dired-find-alternate-file 'disabled nil)
+
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (setq dired-omit-mode t)
+            (define-key dired-mode-map (kbd "^")
+              (lambda () (interactive) (find-alternate-file "..")))     ; was dired-up-directory
+            ))
