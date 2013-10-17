@@ -5,7 +5,7 @@
     (((class color) (min-colors 88) (background light))
      :background "#ddddff")
     (((class color) (min-colors 88) (background dark))
-     :background "#333355"))
+     :background "#2222ff"))
   "Face used to highlight changed lines."
   :group 'diff-hl)
 
