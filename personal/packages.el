@@ -1,6 +1,5 @@
 (prelude-require-packages
- '(
-   markdown-mode
+ '(markdown-mode
    diff-hl
    ag
    scss-mode
@@ -11,4 +10,7 @@
    ruby-block
    rbenv
    rinari
-))
+   feature-mode
+   org
+   god-mode
+   ))
