@@ -23,6 +23,7 @@
 
      (ruby-block-mode t)
      (ruby-test-mode t)
+     (define-key ruby-mode-map (kbd "C-c C-c") 'xmp)
 ))
 
 
