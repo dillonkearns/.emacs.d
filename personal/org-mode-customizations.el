@@ -15,3 +15,5 @@
          (file (standup-file-name))
          "* TODO %?"))
 )
+
+(setq org-src-fontify-natively 't)
