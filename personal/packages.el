@@ -1,3 +1,4 @@
+(require 'prelude-packages)
 (prelude-require-packages
  '(markdown-mode
    diff-hl
@@ -12,5 +13,9 @@
    rinari
    feature-mode
    org
-   god-mode
+   smex
+   ido-vertical-mode
+   perspective
+   visual-regexp
+   visual-regexp-steroids
    ))

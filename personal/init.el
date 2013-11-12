@@ -28,3 +28,11 @@
             (define-key dired-mode-map (kbd "^")
               (lambda () (interactive) (find-alternate-file "..")))     ; was dired-up-directory
             ))
+
+(ido-vertical-mode 1)
+(persp-mode 1)
+
+(require 'visual-regexp-steroids)
+
+;; emacs-lisp
+(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode 1)))
