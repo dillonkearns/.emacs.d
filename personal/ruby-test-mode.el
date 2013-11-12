@@ -174,7 +174,7 @@ second element."
             (regexp-replace-candidates (cdr (car mapping))))
         (if (string-match regexp-match filename)
             (let ((target-filename-candidates
-                   (mapcar '(lambda (regexp)
+                   (mapcar (lambda (regexp)
                               (replace-match regexp nil nil filename nil))
                            regexp-replace-candidates)))
               (setq target-filename
@@ -191,9 +191,8 @@ second element."
     (set-buffer (get-file-buffer file))
     (goto-line line)
     (end-of-line)
-    (message "%s:%s" (current-buffer) (point))
     (if (re-search-backward (concat "^[ \t]*\\(def\\|test\\|it\\|should\\)[ \t]+"
-                                    "\\([\"'].*?[\"']\\|" ruby-symbol-re "*\\)"
+                                    "\\(" "\".*?\"\\|" "'.*?'\\|" ruby-symbol-re "*\\)"
                                     "[ \t]*") nil t)
         (let ((name (match-string 2)))
           (ruby-test-tescase-name name)))))
@@ -205,7 +204,7 @@ second element."
        "\\?" "\\\\\\\\?"
        (replace-regexp-in-string
         "'_?\\|(_?\\|)_?" ".*"
-        (replace-regexp-in-string " +" "_" (match-string 1 name))))
+        (replace-regexp-in-string "#{[^}]*}" ".*" (match-string 1 name))))
     (unless (string-equal "setup" name)
       name)))
 
@@ -231,9 +230,7 @@ filename is a Ruby implementation file."
   (interactive)
   (let ((filename (ruby-test-find-file)))
     (if filename
-        (progn
-          (setq default-directory (or (ruby-test-rails-root filename) (ruby-test-ruby-root filename)))
-          (compilation-start (ruby-test-command filename) t))
+        (ruby-test-run-from-root (ruby-test-command filename))
       (message ruby-test-not-found-message))))
 
 (defun ruby-test-run-at-point ()
@@ -247,8 +244,12 @@ as `ruby-test-run-file'"
           (save-excursion
             (set-buffer test-file-buffer)
             (let ((line (line-number-at-pos (point))))
-              (compilation-start (ruby-test-command filename line) t)))
+              (ruby-test-run-from-root (ruby-test-command filename line))))
         (message ruby-test-not-found-message)))))
+
+(defun ruby-test-run-from-root (test-command)
+  (let ((default-directory (projectile-project-root)))
+    (compilation-start test-command t)))
 
 (defun ruby-test-command (filename &optional line-number)
   "Return the command to run a unit test or a specification
@@ -278,7 +279,7 @@ depending on the filename."
     (if line-number
         (let ((test-case (ruby-test-find-testcase-at filename line-number)))
           (if test-case
-              (setq name-options (format "--name /%s/" test-case))
+              (setq name-options (format "--name \"/%s/\"" test-case))
             (error "No test case at %s:%s" filename line-number))))
     (format "%s %s %s %s" command (mapconcat 'identity options " ") filename name-options)))
 
