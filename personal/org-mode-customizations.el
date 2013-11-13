@@ -26,3 +26,26 @@
      PATH should be a topic that can be thrown at the man command."
   (message (format "open mailplane:%s"  path))
   (shell-command (format "open mailplane:%s"  path)))
+
+(setq org-agenda-custom-commands
+      '(("w" . "Work")
+        ("wi" "Individual flagged"
+         ((agenda "FLAGGED/!TODO")
+          (tags-todo "FLAGGED/!TODO"))
+         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org")))
+         )
+        ("wI" "Individual all"
+         ((agenda "/!TODO")
+          (tags-todo "/!TODO"))
+         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org")))
+         )
+        ("wt" "Team flagged"
+         ((agenda "FLAGGED/!TEAM")
+          (tags-todo "FLAGGED/!TEAM"))
+         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))))
+
+        ("wT" "Team all"
+         ((agenda "/!TEAM")
+          (tags-todo "/!TEAM"))
+         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))))
+))
