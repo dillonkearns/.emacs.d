@@ -60,6 +60,12 @@
 (setq org-todo-keywords
       '((sequence "TODO" "PROJECT" "SOMEDAY" "WF" "|" "DONE" "CANCELLED")))
 
+
+;; org-velocity
+(require 'org-velocity)
+(setq org-velocity-bucket (expand-file-name "velocity.org" org-directory))
+(setq org-velocity-always-use-bucket t)
+(setq org-velocity-force-new t)
 (eval-after-load 'org-mode
   '(progn (whitespace-mode -1)
      ))
