@@ -25,28 +25,37 @@
 
 (setq org-agenda-custom-commands
       '(("w" . "Work")
-        ("wi" "Individual flagged"
+        ("wi" "Individual"
          ((agenda "FLAGGED/!TODO")
-          (tags-todo "FLAGGED/!TODO"))
-         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org")))
+          (tags-todo (concat "FLAGGED&" dtk/org-scheduled-filter-string "/!TODO"))
+          (tags-todo (concat "FLAGGED&" dtk/org-scheduled-filter-string "/!WF"))
+          )
+         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))
+          )
          )
-        ("wI" "Individual all"
-         ((agenda "/!TODO")
-          (tags-todo "/!TODO"))
-         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org")))
+        ("wI" "Individual unflagged"
+         ((agenda "FLAGGED/!TODO")
+          (tags-todo (concat "-FLAGGED&" dtk/org-scheduled-filter-string "/!TODO"))
+          (tags-todo (concat "-FLAGGED&" dtk/org-scheduled-filter-string "/!WF"))
+          )
+         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))
+          )
          )
         ("wt" "Team flagged"
          ((agenda "FLAGGED/!TEAM")
-          (tags-todo "FLAGGED/!TEAM"))
+          (tags-todo (concat dtk/org-scheduled-filter-string "FLAGGED/!TEAM")))
          ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))))
 
         ("wT" "Team all"
          ((agenda "/!TEAM")
-          (tags-todo "/!TEAM"))
+          (tags-todo (concat dtk/org-scheduled-filter-string "/!TEAM")))
          ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))))
+
 ))
 (setq org-agenda-todo-ignore-scheduled 'future)
 (setq org-enforce-todo-dependencies t)
+
+
 (setq org-capture-templates
       '(
         ("w" "Work" entry (file+headline "~/Dropbox/org/gtd/work.org" "Inbox") "* TODO %?\n")
