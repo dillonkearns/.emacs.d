@@ -49,6 +49,21 @@
           (tags-todo "/!TEAM"))
          ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))))
 ))
+(setq org-agenda-todo-ignore-scheduled 'future)
+(setq org-enforce-todo-dependencies t)
+(setq org-capture-templates
+      '(
+        ("w" "Work" entry (file+headline "~/Dropbox/org/gtd/work.org" "Inbox") "* TODO %?\n")
+        ("p" "Personal" entry (file+headline "~/Dropbox/org/gtd/personal.org" "Inbox") "* TODO %?\n")
+        ))
+
+(setq org-todo-keywords
+      '((sequence "TODO" "PROJECT" "SOMEDAY" "WF" "|" "DONE" "CANCELLED")))
+
+(eval-after-load 'org-mode
+  '(progn (whitespace-mode -1)
+     ))
+
 (defun dtk/toggle-flag ()
   (interactive)
   (let (
