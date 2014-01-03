@@ -1,12 +1,8 @@
-(setq org-base-path "~/Dropbox/org")
+(require 'org)
+(setq org-directory "~/Dropbox/org")
 
 (setq org-return-follows-link t)
-
-(defun capture-work-note ()
-  (interactive)
-  (cd (format "%s/%s" org-base-path "work"))
-  (call-interactively 'find-file)
-)
+(org-agenda-files '("~/Dropbox/org/gtd/work.org" "~/Dropbox/org/gtd/personal.org" "~/Dropbox/org/gtd/inbox.org"))
 
 (setq org-capture-templates
       '(("s"
@@ -59,6 +55,17 @@
 
 (setq org-todo-keywords
       '((sequence "TODO" "PROJECT" "SOMEDAY" "WF" "|" "DONE" "CANCELLED")))
+
+;; old zenburn custom faces
+;; (setq org-todo-keyword-faces
+;;       '(
+;;         ("TODO" :foreground "#5F7F5F" :weight bold)
+;;         ("TEAM" :foreground "#4C7073" :weight bold)
+;;         ("PROJECT" :foreground "#DC8CC3" :weight bold)
+;;         ("WF" :foreground "#8C5353" :weight bold)
+;;         ))
+
+;; ("SOMEDAY" :foreground "#7F7F7F" :weight bold)
 
 
 ;; org-velocity
