@@ -49,3 +49,11 @@
           (tags-todo "/!TEAM"))
          ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))))
 ))
+(defun dtk/toggle-flag ()
+  (interactive)
+  (let (
+        (flagged (org-entry-get nil "FLAGGED")))
+    (if flagged
+        (org-delete-property "FLAGGED" "PROPERTIES")
+      (org-entry-put nil "FLAGGED" "t"))))
+
