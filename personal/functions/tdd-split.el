@@ -30,3 +30,5 @@
       (projectile-completing-read "Choose code file:" (dtk-matching-files (dtk-matching-code-file-name test-file-path)))
       (car (dtk-matching-files (dtk-matching-code-file-name test-file-path)))
 ))
+
+(provide 'tdd-split)

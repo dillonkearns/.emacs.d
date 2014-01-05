@@ -3,6 +3,7 @@
  '(markdown-mode
    diff-hl
    ag
+   wgrep-ag
    scss-mode
    yasnippet
    github-browse-file
@@ -18,4 +19,8 @@
    perspective
    visual-regexp
    visual-regexp-steroids
+   powerline
+   phi-search
    ))
+
+(provide 'init-packages)

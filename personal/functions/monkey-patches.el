@@ -1,13 +1,3 @@
-(global-linum-mode t)
-(setq vc-follow-symlinks t)
-(setq ruby-insert-encoding-magic-comment nil)
-(global-set-key [remap move-beginning-of-line]
-                'move-beginning-of-line)
-
-(setq rbenv-show-active-ruby-in-modeline nil)
-(setq ace-jump-mode-scope 'window)
-
-
 ;; Based on: http://programmers.stackexchange.com/a/19683
 ;; Original idea from: http://www.opensubscriber.com/message/emacs-devel@gnu.org/10971693.html
 (defun comment-dwim-line (&optional arg)
@@ -24,3 +14,5 @@
         )
     (comment-dwim arg)))
 (global-set-key "\M-;" 'comment-dwim-line)
+
+(provide 'monkey-patches)

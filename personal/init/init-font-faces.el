@@ -1,5 +1,4 @@
 ;; diff-hl
-
 (defface diff-hl-change
   '((default :foreground "blue3")
     (((class color) (min-colors 88) (background light))
@@ -27,4 +26,4 @@
   "Face used to highlight deleted lines."
   :group 'diff-hl)
 
-;; powerline
+(provide 'init-font-faces)
