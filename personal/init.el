@@ -31,6 +31,9 @@
 (require 'dired-x)
 (push ".DS_Store" dired-omit-extensions)
 
+;; hide file permissions, timestamps, etc. by default
+(require 'dired-details+)
+
 ;; Reuse dired buffers
 (put 'dired-find-alternate-file 'disabled nil)
 

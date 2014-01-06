@@ -21,6 +21,19 @@
    visual-regexp-steroids
    powerline
    phi-search
+   ido-ubiquitous
+   moe-theme
+   applescript-mode
+   dash
+   org-agenda-property
+   robe
+   s
+   wgrep-ag
+   butler
+   use-package
+   vimgolf
+   litable
+   dired-details+
    ))
 
 (provide 'init-packages)
