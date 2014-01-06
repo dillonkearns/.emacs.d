@@ -32,7 +32,8 @@
                    ("C-o"         . other-window)
                    ("C-%"         . vr/query-replace)
 
-                   ("C-c C-o"     . toggle-window-split)
+                   ;; TODO: find new kbd for this
+                   ;; ("C-c C-o"     . toggle-window-split)
 
                    ("M-P"         . move-text-up)
                    ("M-N"         . move-text-down)
@@ -41,7 +42,8 @@
                    ;; ace-jump-mode
                    ("C-c C-j"     . jump-to-corresponding)
                    ("C-c C-k"         . ace-jump-word-mode)
-                   ("C-c C-l"         . ace-jump-line-mode)
+                   ;; TODO: find a new kbd for this
+                   ;; ("C-c C-l"         . ace-jump-line-mode)
 
                    ("s-="         . increase-default-font-height)
                    ("s--"         . decrease-default-font-height)
@@ -56,6 +58,8 @@
                    ("C-c c"       . org-capture)
                    ("s-v"         . org-velocity)
 
+                   ;; org-gtd
+                   ("C-c C-o"     . org-gtd/organize-subtree)
                    ))
 ;; DTK: get this to work (don't use this binding in org-mode. Only prog modes?)
 ;; ("C-c C-l"     . dash-at-point)

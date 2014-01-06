@@ -101,6 +101,7 @@
 
 ;; personal/site-lisp
 (require 'invoca)
+(require 'org-gtd)
 
 ;; personal/functions
 (require 'font-helpers)
