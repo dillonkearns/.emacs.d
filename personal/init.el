@@ -57,6 +57,10 @@
 ;; ido
 ;;;;;;;;;
 (ido-vertical-mode 1)
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+(require 'magit)
+(setq magit-completing-read-function 'magit-ido-completing-read)
 
 ;; visual-regexp-steroids
 (require 'visual-regexp-steroids)
