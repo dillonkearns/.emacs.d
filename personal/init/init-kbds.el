@@ -24,6 +24,9 @@
                    ("s-2"         . invoca/web-2)
                    ("s-3"         . invoca/web-3)
 
+                   ;; magit
+                   ("s-m c"         . magit-checkout)
+
 
                    ("<C-return>"         . other-window)
                    ("C-o"         . other-window)
