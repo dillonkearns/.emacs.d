@@ -1,0 +1,5 @@
+#name : STORY-id
+#group : Jira
+# key: s
+# --
+[[https://ringrevenue.atlassian.net/browse/STORY-$1][STORY-${1:id}]]$0 

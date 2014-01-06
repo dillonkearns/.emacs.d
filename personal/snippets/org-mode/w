@@ -1,0 +1,5 @@
+#name : WEB-id
+#group : Jira
+# key: w
+# --
+[[https://ringrevenue.atlassian.net/browse/WEB-$1][WEB-${1:id}]]$0 
