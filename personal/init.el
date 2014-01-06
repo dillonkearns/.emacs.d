@@ -92,7 +92,6 @@
 (require 'init-auto-modes)
 (require 'init-prelude-overrides)
 (require 'init-ruby-mode)
-(require 'init-perspectives)
 (require 'init-diff-hl-mode)
 (require 'init-font-faces)
 (require 'init-god-mode)
@@ -107,3 +106,6 @@
 (require 'open-in-source-tree)
 (require 'window-helpers)
 (require 'monkey-patches)
+
+;; setup perspectives once initialization is complete
+(require 'init-perspectives)
