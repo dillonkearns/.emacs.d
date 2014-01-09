@@ -1,4 +1,7 @@
 (require 'org)
+
+(setq org-fast-tag-selection-single-key t)
+
 (setq org-directory "~/Dropbox/org")
 
 (setq org-return-follows-link t)
@@ -15,13 +18,14 @@
 (setq org-src-fontify-natively 't)
 
 ;; mailplane support
-(org-add-link-type "mailplane" 'mailplane-open)
-
 (defun mailplane-open (path)
   "Visit the manpage on PATH.
      PATH should be a topic that can be thrown at the man command."
   (message (format "open mailplane:%s"  path))
   (shell-command (format "open mailplane:%s"  path)))
+
+(org-add-link-type "mailplane" 'mailplane-open)
+
 
 ;; DTK: figure out what to set the background to
 ;; (set-face-attribute 'org-block-background nil :background "#f0f0e8")
@@ -66,6 +70,7 @@
 
 (setq org-capture-templates
       '(
+        ("r" "Retro" entry (file+headline "~/Dropbox/org/gtd/retro.org" "Inbox") "* TODO %?\n")
         ("w" "Work" entry (file+headline "~/Dropbox/org/gtd/work.org" "Inbox") "* TODO %?\n")
         ("p" "Personal" entry (file+headline "~/Dropbox/org/gtd/personal.org" "Inbox") "* TODO %?\n")
         ))
