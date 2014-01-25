@@ -104,6 +104,7 @@
 ;; personal/site-lisp
 (require 'invoca)
 (require 'org-gtd)
+(require 'rcodetools)
 
 ;; personal/functions
 (require 'font-helpers)
