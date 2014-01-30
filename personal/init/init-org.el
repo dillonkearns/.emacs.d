@@ -33,35 +33,53 @@
 (setq org-use-property-inheritance t)
 
 ;; Got tip from Carstien's comment at http://comments.gmane.org/gmane.emacs.orgmode/47863
-(defvar dtk/org-scheduled-filter-string "SCHEDULED=\"\"|SCHEDULED<=\"<today>\"")
-; FLAGGED="t"&SCHEDULED=""|FLAGGED="t"&SCHEDULED<="<today>"/!TODO
+(defvar dtk/org-scheduled-filter-string "SCHEDULED=\"\"|SCHEDULED<=\"<now>\"")
 (setq org-agenda-custom-commands
-      '(("w" . "Work")
-        ("wi" "Individual"
-         ((agenda "+ABC=\"t\"/!TODO")
-          (tags-todo (concat "FLAGGED=\"t\"&" dtk/org-scheduled-filter-string "&FLAGGED=\"t\"/!TODO"))
-          (tags-todo (concat "FLAGGED=\"t\"+" dtk/org-scheduled-filter-string "&FLAGGED=\"t\"/!WF"))
+      '(
+        ("w" "Work"
+         (
+          (agenda "" ((org-agenda-time-grid nil)
+                      (org-agenda-ndays 1)
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                      (org-deadline-warning-days 30)
+                      (org-agenda-entry-types '(:deadline))))
+          (tags-todo "DEADLINE<=\"<+1w>\""
+                     ((org-agenda-overriding-header "\nDue this week\n------------------\n")
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                      (org-deadline-warning-days 30)
+                      (org-agenda-entry-types '(:deadline))
+                      ))
+          (tags-todo (concat "FLAGGED=\"t\"&" dtk/org-scheduled-filter-string "&FLAGGED=\"t\"/!TODO")
+                     ((org-agenda-overriding-header "\nFlagged TODO\n------------------\n")))
+          (tags-todo (concat "FLAGGED=\"t\"+" dtk/org-scheduled-filter-string "&FLAGGED=\"t\"/!WF")
+                     ((org-agenda-overriding-header "\nFlagged WF\n------------------\n")))
           )
-         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))
+         ((org-enforce-todo-dependencies t)
+          (org-agenda-dim-blocked-tasks 'invisible)
+          (org-agenda-files (list "~/Dropbox/org/gtd/work.org"))
+          ))
+        ("p" "Personal"
+         (
+          (agenda "" ((org-agenda-time-grid nil)
+                      (org-agenda-ndays 1)
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                      (org-deadline-warning-days 30)
+                      (org-agenda-entry-types '(:deadline))))
+          (tags-todo "DEADLINE<=\"<+1w>\""
+                     ((org-agenda-overriding-header "\nDue this week\n------------------\n")
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                      (org-deadline-warning-days 30)
+                      (org-agenda-entry-types '(:deadline))
+                      ))
+          (tags-todo (concat "FLAGGED=\"t\"&" dtk/org-scheduled-filter-string "&FLAGGED=\"t\"/!TODO")
+                     ((org-agenda-overriding-header "\nFlagged TODO\n------------------\n")))
+          (tags-todo (concat "FLAGGED=\"t\"+" dtk/org-scheduled-filter-string "&FLAGGED=\"t\"/!WF")
+                     ((org-agenda-overriding-header "\nFlagged WF\n------------------\n")))
           )
-         )
-        ("wI" "Individual unflagged"
-         ((agenda "FLAGGED/!TODO")
-          (tags-todo (concat "-FLAGGED&" dtk/org-scheduled-filter-string "/!TODO"))
-          (tags-todo (concat "-FLAGGED&" dtk/org-scheduled-filter-string "/!WF"))
-          )
-         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))
-          )
-         )
-        ("wt" "Team flagged"
-         ((agenda "FLAGGED/!TEAM")
-          (tags-todo (concat dtk/org-scheduled-filter-string "FLAGGED/!TEAM")))
-         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))))
-
-        ("wT" "Team all"
-         ((agenda "/!TEAM")
-          (tags-todo (concat dtk/org-scheduled-filter-string "/!TEAM")))
-         ((org-agenda-files (list "~/Dropbox/org/gtd/work.org"))))
+         ((org-enforce-todo-dependencies t)
+          (org-agenda-dim-blocked-tasks 'invisible)
+          (org-agenda-files (list "~/Dropbox/org/gtd/personal.org"))
+          ))
 
 ))
 (setq org-agenda-todo-ignore-scheduled 'future)
