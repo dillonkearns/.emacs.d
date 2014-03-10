@@ -1,4 +1,3 @@
-;; (load-file "~/Dropbox/opensource/prelude/personal/god-mode.elc")
 (require 'god-mode)
 
 (defun my-update-cursor ()

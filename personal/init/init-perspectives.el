@@ -13,15 +13,12 @@
 
    (defvar gtd-base-path (f-join org-directory "gtd"))
 
-   (custom-persp "org"
-                 (find-file (f-join gtd-base-path "work.org"))
-                 (find-file (f-join gtd-base-path "personal.org")))
-
    (custom-persp "emacs.d"
                  (find-file "~/.emacs.d/personal"))
 
-   (custom-persp "gearup"
-                 (find-file "~/opensource/gearup"))
+   (custom-persp "org"
+                 (find-file (f-join gtd-base-path "personal.org"))
+                 (find-file (f-join gtd-base-path "work.org")))
 
    ))
 

@@ -83,20 +83,36 @@
 (setq mc/list-file (expand-file-name prelude-personal-dir ".mc-lists.el"))
 
 ;;;;;;;;;
-;; smartparens
+;; diff-hl
 ;;;;;;;;;
-(add-hook 'emacs-lisp-mode-hook (lambda () (smartparens-global-mode 1)))
+(add-hook 'scss-mode-hook (lambda () (diff-hl-mode 1)))
+(add-hook 'scss-mode-hook (lambda () (whitespace-mode 1)))
+(add-hook 'git-commit-commit-hook 'diff-hl-update)
+
 
 ;;;;;;;;;
 ;; color-theme
 ;;;;;;;;;
 
+
+;; miscelaneous
+(setq default-major-mode 'text-mode)
+(add-hook 'text-mode-hook (lambda ()
+                                   (prelude-mode 1)
+
+                             (god-local-mode 1)
+                                   ))
+
+
 ;; use moe-dark color theme instead of zenburn
-(disable-theme 'zenburn)
-(load-theme 'moe-dark t)
+;; (disable-theme 'zenburn)
+;; (load-theme 'zenburn t)
+;; (load-theme 'moe-dark t)
+;; (load-theme 'moe-light t)
 
 ;; personal/init files
 (require 'init-diminish)
+(require 'init-smartparens)
 (require 'init-org)
 (require 'init-overtone)
 (require 'init-yasnippet)
