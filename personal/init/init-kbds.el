@@ -1,5 +1,6 @@
+(require 'dash)
 (defun define-kbds (mode-map kbd-pairs-list)
-  "Iterate through list of paris"
+  "Iterate through list of pairs"
   (-each kbd-pairs-list (lambda (keymap-pair)
                        (let ((key-binding (car keymap-pair)) (command (cdr keymap-pair)))
                          (define-key mode-map (kbd key-binding) command)))))
@@ -8,7 +9,6 @@
 (require 'init-font-faces)
 
 (define-prefix-command 'dtk-map)
-(global-set-key (kbd "C-.") 'dtk-map)
 
 (define-kbds prelude-mode-map '(
                    ;; super keys
@@ -41,9 +41,10 @@
 
                    ;; ace-jump-mode
                    ("C-c C-j"     . jump-to-corresponding)
-                   ("C-c C-k"         . ace-jump-word-mode)
+                   ("C-c C-h"         . ace-jump-word-mode)
+                   ("C-c C-k"         . ace-jump-char-mode)
                    ;; TODO: find a new kbd for this
-                   ;; ("C-c C-l"         . ace-jump-line-mode)
+                   ("C-c C-;"         . ace-jump-line-mode)
 
                    ("s-="         . increase-default-font-height)
                    ("s--"         . decrease-default-font-height)
@@ -57,9 +58,9 @@
                    ;; org-mode
                    ("C-c c"       . org-capture)
                    ("s-v"         . org-velocity)
+                   ("C-."         . dtk-map)
 
                    ;; org-gtd
-                   ("C-c C-o"     . org-gtd/organize-subtree)
                    ))
 ;; DTK: get this to work (don't use this binding in org-mode. Only prog modes?)
 ;; ("C-c C-l"     . dash-at-point)
@@ -68,11 +69,22 @@
 (define-kbds org-mode-map '(
                             ("C-M-p"       . org-move-subtree-up)
                             ("C-M-n"       . org-move-subtree-down)
+                            ("C-+" . org-gtd/schedule-for-tomorrow)
+                            ))
+(require 'org-agenda)
+(define-kbds org-agenda-mode-map '(
+                            ("+" . org-gtd/schedule-for-tomorrow-agenda)
+                            ("."         . dtk-map)
                             ))
 (define-kbds dtk-map '(
+                       ("f"     .     dtk/toggle-flag)
                        ("C-f"     .     dtk/toggle-flag)
-                       ("C-o"     .     org-toggle-ordered-property)
+                       ("C-s"     .     org-toggle-ordered-property)
+                       ("C-w"     .     org-gtd/someday-refile)
+                       ("C-a"     .     org-archive-subtree)
 
+                       ;; multiple-cursors
+                       ("C-d"     . mc/mark-all-symbols-like-this-in-defun)
                             ))
 
 ;; (require 'phi-search)
