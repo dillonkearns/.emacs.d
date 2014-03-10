@@ -3,6 +3,13 @@
 
 (add-to-list 'load-path (expand-file-name "site-lisp" prelude-personal-dir))
 (add-to-list 'load-path (expand-file-name "init" prelude-personal-dir))
+;; recursively load init
+(require 'f)
+(add-to-list 'load-path (f-directories (expand-file-name "init" prelude-personal-dir) nil t))
+
+(require 'dash)
+(-each (f-directories (expand-file-name "init" prelude-personal-dir)) (lambda (init-dir) (add-to-list 'load-path init-dir)))
+
 (add-to-list 'load-path (expand-file-name "functions" prelude-personal-dir))
 (require 'init-packages)
 
