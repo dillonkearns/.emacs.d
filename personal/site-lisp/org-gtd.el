@@ -29,4 +29,18 @@
      (org-cut-subtree)
      (org-gtd/paste-subtree-in-top-level-heading destination-heading))))
 
+(defun org-gtd/someday-refile ()
+  (interactive)
+  (let ((org-refile-targets '(
+                              ("personal.org" :regexp . "Inbox")
+                              ("work.org" :regexp . "Inbox")
+                              ("leisure.org" :regexp . "Inbox")
+                              ("personal-someday.org" :regexp . "Inbox")
+                              ("work-someday.org" :regexp . "Inbox")
+                              ("leisure-someday.org" :regexp . "Inbox")
+                              ("productivity.org" :regexp . "Inbox")
+                              )))
+    (org-refile)
+))
+
 (provide 'org-gtd)
