@@ -30,6 +30,13 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WF(w)" "|" "DONE(d)" "CANCELLED(l)")))
 
+(setq org-stuck-projects
+      ;; level 1 is reserved for Areas of Focus
+      ;; If it's not a top-level heading, and it doesn't have any TODO keywords, then it's a project
+      ;; If it's a project but it doesn't have any TODO or WF items, then it is a stuck project
+      '("+LEVEL>1/-TODO-WF-DONE-CANCELLED" ("TODO" "WF")))
+
+
 ;; custom TODO faces for zenburn theme
 (setq org-todo-keyword-faces
       '(
