@@ -19,6 +19,7 @@
                    ("s-t"         . projectile-find-test-file)
                    ("s-T"         . dtk-tdd-split)
                    ("s-S"         . dtk/open-root-in-source-tree)
+                   ("s-O"         . dtk/github/open-branch)
                    ("s-j"         . persp-switch)
                    ("s-1"         . invoca/web-1)
                    ("s-2"         . invoca/web-2)
