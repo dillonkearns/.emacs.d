@@ -25,7 +25,7 @@
 (defun invoca/web-1 ()
   (interactive)
   (custom-persp "1"
-                (find-file "~/work/web")))
+                (find-file "~/work/web1")))
 
 (defun invoca/web-2 ()
   (interactive)
@@ -36,5 +36,10 @@
   (interactive)
   (custom-persp "3"
                 (find-file "~/work/web3")))
+
+(defun invoca/web-4 ()
+  (interactive)
+  (custom-persp "4"
+                (find-file "~/work/web4")))
 
 (provide 'init-perspectives)

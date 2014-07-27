@@ -24,6 +24,7 @@
                    ("s-1"         . invoca/web-1)
                    ("s-2"         . invoca/web-2)
                    ("s-3"         . invoca/web-3)
+                   ("s-4"         . invoca/web-4)
 
                    ;; magit
                    ("s-m c"         . magit-checkout)
