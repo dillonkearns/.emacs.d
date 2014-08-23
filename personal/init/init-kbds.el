@@ -16,6 +16,8 @@
                    ("s-g"         . ag-project)
                    ("s-G"         . ag-project-regexp)
                    ("s-b"         . projectile-switch-to-buffer)
+                   ("s-p"         . projectile-switch-project)
+                   ("s-f"         . projectile-find-file)
                    ("s-t"         . projectile-find-test-file)
                    ("s-T"         . dtk-tdd-split)
                    ("s-S"         . dtk/open-root-in-source-tree)
@@ -30,7 +32,7 @@
                    ("s-m c"         . magit-checkout)
 
 
-                   ("<C-return>"         . other-window)
+
                    ("C-o"         . other-window)
                    ("C-%"         . vr/query-replace)
 
@@ -42,7 +44,9 @@
                    ("C-c C-,"     . ert-results-rerun-all-tests)
 
                    ;; ace-jump-mode
-                   ("C-c C-j"     . jump-to-corresponding)
+                   ("<C-return>"      . ace-jump-line-mode)
+                   ("<S-return>"      . ace-jump-word-mode)
+                   ("C-c C-j"         . jump-to-corresponding)
                    ("C-c C-h"         . ace-jump-word-mode)
                    ("C-c C-k"         . ace-jump-char-mode)
                    ;; TODO: find a new kbd for this

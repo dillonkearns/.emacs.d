@@ -11,35 +11,28 @@
         (when initialize ,@body)
         (setq persp-last current-perspective)))
 
-   (defvar gtd-base-path (f-join org-directory "gtd"))
-
    (custom-persp "emacs.d"
                  (find-file "~/.emacs.d/personal"))
-
-   (custom-persp "org"
-                 (find-file (f-join gtd-base-path "personal.org"))
-                 (find-file (f-join gtd-base-path "work.org")))
-
    ))
 
 (defun invoca/web-1 ()
   (interactive)
   (custom-persp "1"
-                (find-file "~/work/web1")))
+                (find-file "~/work/web/1")))
 
 (defun invoca/web-2 ()
   (interactive)
   (custom-persp "2"
-                (find-file "~/work/web2")))
+                (find-file "~/work/web/2")))
 
 (defun invoca/web-3 ()
   (interactive)
   (custom-persp "3"
-                (find-file "~/work/web3")))
+                (find-file "~/work/web/3")))
 
 (defun invoca/web-4 ()
   (interactive)
   (custom-persp "4"
-                (find-file "~/work/web4")))
+                (find-file "~/work/web/4")))
 
 (provide 'init-perspectives)

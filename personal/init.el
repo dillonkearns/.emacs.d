@@ -5,10 +5,10 @@
 (add-to-list 'load-path (expand-file-name "init" prelude-personal-dir))
 ;; recursively load init
 (require 'f)
-(add-to-list 'load-path (f-directories (expand-file-name "init" prelude-personal-dir) nil t))
+;; (add-to-list 'load-path (f-directories (expand-file-name "init" prelude-personal-dir) nil t))
 
 (require 'dash)
-(-each (f-directories (expand-file-name "init" prelude-personal-dir)) (lambda (init-dir) (add-to-list 'load-path init-dir)))
+(-each (f-directories (expand-file-name "init" prelude-personal-dir)) (lambda (init-dir) (add-to-list 'load-path (expand-file-name init-dir))))
 
 (add-to-list 'load-path (expand-file-name "functions" prelude-personal-dir))
 (require 'init-packages)
@@ -28,8 +28,14 @@
 ;;;;;;;;;
 ;; rbenv
 ;;;;;;;;;
+(setq rbenv-executable "/usr/local/bin/rbenv")
+(add-to-list 'load-path (expand-file-name "/usr/local/bin/rbenv"))
 (require 'rbenv)
 (setq rbenv-show-active-ruby-in-modeline nil)
+
+
+(setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
+(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
 (global-rbenv-mode)
 
 ;;;;;;;;;
@@ -74,6 +80,17 @@
 (require 'org)
 (setq org-completion-use-ido t)
 
+;; use flx-ido
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+(setq projectile-completion-system 'ido)
+
+
 ;; visual-regexp-steroids
 (require 'visual-regexp-steroids)
 
@@ -105,7 +122,9 @@
 
 
 ;; use moe-dark color theme instead of zenburn
-;; (disable-theme 'zenburn)
+(disable-theme 'zenburn)
+(require 'rubytapas-theme)
+(load-theme 'rubytapas)
 ;; (load-theme 'zenburn t)
 ;; (load-theme 'moe-dark t)
 ;; (load-theme 'moe-light t)
@@ -114,7 +133,7 @@
 (require 'init-diminish)
 (require 'init-smartparens)
 (require 'init-org)
-(require 'init-overtone)
+;; (require 'init-overtone)
 (require 'init-yasnippet)
 (require 'init-kbds)
 (require 'init-auto-modes)
@@ -139,3 +158,9 @@
 
 ;; setup perspectives once initialization is complete
 (require 'init-perspectives)
+(require 'persp-projectile)
+
+(set-default-font "Source Code Pro")
+
+;; performance
+(setq gc-cons-threshold 20000000)
